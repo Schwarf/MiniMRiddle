@@ -49,6 +49,69 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
+    var password by remember { mutableStateOf("") }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Background image setup
+        Image(
+            painter = painterResource(R.drawable.flying),
+            contentDescription = null, // Background image does not require a description
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize()
+        )
+
+
+        // Use Modifier.fillMaxHeight() on Column to make it take the entire height
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(16.dp)
+                .align(Alignment.Center),
+            verticalArrangement = Arrangement.SpaceBetween // This will space the children evenly
+        ) {
+            Text(
+                text = "Du willst also unseren Schatz? Dann musst Du das Passwort kennen!",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontSize = 20.sp
+                ),
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.weight(0.6f)) // This adds flexible space between text and input
+            Text(
+                text = "Nur Taiwaner kennen das erste Geheimnis des Passworts",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontSize = 20.sp
+                ),
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.weight(1f)) // This adds flexible space between text and input
+
+            // Keep the input field and button closer to each other
+            Column {
+                TextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Geheimes Passwort eingeben") }
+                )
+                Button(onClick = {
+                    if (password == "Oster-Pulk") {
+                        onPasswordCorrect()
+                    } else {
+                        // Handle incorrect password
+                    }
+                }) {
+                    Text("Passwort abschicken!")
+                }
+
+            }
+            Spacer(modifier = Modifier.weight(0.5f)) // This adds flexible space between text and input
+        }
+    }
 
 }
 
@@ -119,7 +182,7 @@ fun PasswordScreen(onPasswordCorrect: () -> Unit) {
                     label = { Text("Geheimes Passwort eingeben") }
                 )
                 Button(onClick = {
-                    if (password == "Hallo") {
+                    if (password == "Oster-Pulk") {
                         onPasswordCorrect()
                     } else {
                         // Handle incorrect password
