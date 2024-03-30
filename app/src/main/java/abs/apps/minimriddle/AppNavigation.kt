@@ -9,7 +9,8 @@ import androidx.navigation.compose.rememberNavController
 fun AppNavigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "password") {
+    NavHost(navController = navController, startDestination = "easter") {
+        composable("easter") {HelloMartaScreen {navController.navigate("password") }}
         composable("password") { PasswordScreen { navController.navigate("numbers") } }
         composable("numbers") { NumberInputScreen { navController.navigate("images") } }
         composable("images") { Finale() }
