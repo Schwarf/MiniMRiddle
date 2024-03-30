@@ -250,7 +250,7 @@ fun HelloMartaScreen(onButtonClick : () -> Unit) {
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
-                    fontSize = 30.sp
+                    fontSize = 25.sp
                 ),
             )
             Button(onClick = {onButtonClick()},
