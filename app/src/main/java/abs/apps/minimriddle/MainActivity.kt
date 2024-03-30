@@ -72,7 +72,7 @@ fun DigitOnlyTextField(value: String, onValueChange: (String) -> Unit) {
 @Composable
 fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
     var password by remember { mutableStateOf("") }
-
+    var showDialog by remember { mutableStateOf(false)  }
     Box(modifier = Modifier.fillMaxSize()) {
         // Background image setup
         Image(
@@ -120,7 +120,7 @@ fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
                     if (password == "10271802") {
                         onPasswordCorrect()
                     } else {
-
+                        showDialog = true
                     }
                 }) {
                     Text("Zahlencode abschicken!")
@@ -130,6 +130,9 @@ fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
             Spacer(modifier = Modifier.weight(0.5f)) // This adds flexible space between text and input
         }
     }
+    if (showDialog)
+        ShowIncorrectPasswordDialog (onDismiss = {showDialog = false})
+
 
 }
 
@@ -239,7 +242,7 @@ fun HelloMartaScreen(onButtonClick : () -> Unit) {
             Column(modifier = Modifier.padding(16.dp)) {
             Spacer(modifier = Modifier.weight(1f)) // This adds flexible space between text and input
             Text(
-                text = "Hallo Marta, hilfst Du mir den Schatz von den bösen Knödelmon zurückzuholen.",
+                text = "Hallo Marta, hilfst Du mir den Schatz von den gemeinen Knödelmon zurückzuholen.",
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
@@ -270,7 +273,7 @@ fun ShowIncorrectPasswordDialog(onDismiss: () -> Unit) {
                     modifier = Modifier.fillMaxWidth().height(200.dp).clip(shape = RoundedCornerShape(8.dp)),
                     contentScale = ContentScale.Crop
                 )
-                Text(text = "Das war leider falsc)
+                Text(text = "Das war leider falsch.")
 
             }
         },
