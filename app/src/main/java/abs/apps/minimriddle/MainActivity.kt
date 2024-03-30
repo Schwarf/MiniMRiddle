@@ -138,21 +138,25 @@ fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
 
 @Composable
 fun Finale() {
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(
-            text = "Der Schatz wird von Emmie bewacht. Finde Emmie!",
-            style = TextStyle(
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            ),
-        )
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Background image setup
         Image(
             painter = painterResource(R.drawable.emmie),
-            contentDescription = null, // Provide a description if needed
-            modifier = Modifier
-                .fillMaxSize() // Set the size of the image if needed
+            contentDescription = null, // Background image does not require a description
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize()
         )
 
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = "Der Schatz wird von Emmie bewacht. Finde Emmie!",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                ),
+            )
+
+        }
     }
 }
 
