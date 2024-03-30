@@ -117,7 +117,7 @@ fun NumberInputScreen(onPasswordCorrect: () -> Unit) {
             Column {
                 DigitOnlyTextField(value = password, onValueChange = { password = it })
                 Button(onClick = {
-                    if (password == "10271802") {
+                    if (password == "27071948") {
                         onPasswordCorrect()
                     } else {
                         showDialog = true
@@ -246,7 +246,7 @@ fun HelloMartaScreen(onButtonClick : () -> Unit) {
             Column(modifier = Modifier.padding(16.dp)) {
             Spacer(modifier = Modifier.weight(1f)) // This adds flexible space between text and input
             Text(
-                text = "Hallo Marta, hilfst Du mir den Schatz von den gemeinen Knödelmon zurückzuholen.",
+                text = "Hallo Marta, hilfst Du mir den Schatz von den gemeinen Knödelmon zurückzuholen?",
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
